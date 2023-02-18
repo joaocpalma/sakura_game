@@ -10,7 +10,7 @@ public class StartScreen {
     private Picture gameStart;
 
     public StartScreen() {
-      gameStart = new Picture(20, 20, "Sakura/media/Cover/Sakura_Game_-_Cover_+_Start__Frame_1_.jpg"); // mudar imagem
+      gameStart = new Picture(0, 0, "Sakura/media/Cover/Sakura_Game_-_Cover_+_Start__Frame_1_.jpg"); // mudar imagem
       gameStart.draw();
 
 

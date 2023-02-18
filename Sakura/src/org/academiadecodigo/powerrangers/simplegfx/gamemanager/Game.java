@@ -1,22 +1,29 @@
 package org.academiadecodigo.powerrangers.simplegfx.gamemanager;
 
+import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Flower;
 import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Hero;
 import org.academiadecodigo.powerrangers.simplegfx.MagicKeyboard.MagicKeyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.util.LinkedList;
 
 
 public class Game {
-
     MagicKeyboard magicKeyboard = new MagicKeyboard();
     Hero hero;
     Picture lvl;
     Grid grid;
     StartScreen startScreen;
     GameOver gameOver;
+    Background background;
+    Picture flower;
+    GameColision gameColision;
+    private boolean start = false;
 
 
     /**
-     * Inicializa tudo o que é preciso para arrancar o jogo
+     * Start Game
      */
     public void init() {
         startScreen = new StartScreen();
@@ -31,6 +38,10 @@ public class Game {
 
         start();
     }
+
+    /**
+     * Game Over
+     * */
     public void gameOver() {
         gameOver= new GameOver();
         magicKeyboard.init();
@@ -50,10 +61,15 @@ public class Game {
         lvl.draw();
         grid = new Grid(17,9);
         hero = new Hero(20,640,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
-        // passa o hero para o keyboard
+        flower = new Picture(100,640,"Sakura/media/Flower/flower.png");
+        flower.draw();
+
         magicKeyboard.setHero(hero);
-        // passa o lvl para o keyboard para mexer o ecran -> melhorar depois porque a responsabilidade de o ecran andar é do game e não do teclado
         magicKeyboard.setLvl(lvl);
+
+
+        //gameColision.isFlowerCollision();
+
 
         while (hero.getX() != 1750){
             System.out.println("waiting for player");
@@ -76,9 +92,9 @@ public class Game {
         grid = new Grid(17,9);
 
         hero = new Hero(20,200,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
-        // passa o hero para o keyboard
+
         magicKeyboard.setHero(hero);
-        // passa o lvl para o keyboard para mexer o ecran -> melhorar depois porque a responsabilidade de o ecran andar é do game e não do teclado
+
         magicKeyboard.setLvl(lvl);
         while (hero.getX() != 1750){
             System.out.println("waiting for player");
@@ -95,9 +111,9 @@ public class Game {
         grid = new Grid(17,9);
 
         hero = new Hero(20,310,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
-        // passa o hero para o keyboard
+
         magicKeyboard.setHero(hero);
-        // passa o lvl para o keyboard para mexer o ecran -> melhorar depois porque a responsabilidade de o ecran andar é do game e não do teclado
+
         magicKeyboard.setLvl(lvl);
         while (hero.getX() != 1750){
             System.out.println("waiting for player");
@@ -115,9 +131,9 @@ public class Game {
         grid = new Grid(17,9);
 
         hero = new Hero(20,310,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
-        // passa o hero para o keyboard
+
         magicKeyboard.setHero(hero);
-        // passa o lvl para o keyboard para mexer o ecran -> melhorar depois porque a responsabilidade de o ecran andar é do game e não do teclado
+
         magicKeyboard.setLvl(lvl);
         while (hero.getX() != 1750){
             System.out.println("waiting for player");
@@ -135,10 +151,57 @@ public class Game {
         grid = new Grid(17,9);
 
         hero = new Hero(20,310,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
-        // passa o hero para o keyboard
+
         magicKeyboard.setHero(hero);
-        // passa o lvl para o keyboard para mexer o ecran -> melhorar depois porque a responsabilidade de o ecran andar é do game e não do teclado
+
         magicKeyboard.setLvl(lvl);
+        while (hero.getX() != 1750){
+            System.out.println("waiting for player");
+            if(hero.getX() == 1850){
+                break;
+            }
+        }
+        start6();
+    }
+
+    public void start6() {
+
+        lvl = new Picture(0, 0, "Sakura/media/Level/Game Background level 6.jpg");
+        lvl.draw();
+        grid = new Grid(17,9);
+
+        hero = new Hero(20,310,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
+
+        magicKeyboard.setHero(hero);
+
+        magicKeyboard.setLvl(lvl);
+        while (hero.getX() != 1750){
+            System.out.println("waiting for player");
+            if(hero.getX() == 1850){
+                break;
+            }
+        }
+        start7();
+    }
+
+    public void start7() {
+
+        lvl = new Picture(0, 0, "Sakura/media/Level/Game Background level 6.jpg");
+        lvl.draw();
+        grid = new Grid(17,9);
+
+        hero = new Hero(20,310,"media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png");
+
+        magicKeyboard.setHero(hero);
+
+        magicKeyboard.setLvl(lvl);
+        while (hero.getX() != 1750){
+            System.out.println("waiting for player");
+            if(hero.getX() == 1850){
+                break;
+            }
+        }
+        start7();
     }
 
 }

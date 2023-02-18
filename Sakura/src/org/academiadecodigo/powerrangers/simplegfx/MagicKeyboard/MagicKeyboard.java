@@ -1,10 +1,8 @@
 package org.academiadecodigo.powerrangers.simplegfx.MagicKeyboard;
 
+import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Flower;
 import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Hero;
-import org.academiadecodigo.powerrangers.simplegfx.gamemanager.Game;
-import org.academiadecodigo.powerrangers.simplegfx.gamemanager.GameOver;
-import org.academiadecodigo.powerrangers.simplegfx.gamemanager.Grid;
-import org.academiadecodigo.powerrangers.simplegfx.gamemanager.StartScreen;
+import org.academiadecodigo.powerrangers.simplegfx.gamemanager.*;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -20,6 +18,8 @@ public class MagicKeyboard implements KeyboardHandler {
     private GameOver gameOver;
 
     private Grid grid;
+    public Background background;
+    public Picture flower;
 
 
     public void init() {
@@ -49,12 +49,18 @@ public class MagicKeyboard implements KeyboardHandler {
         gameOver.setKey(KeyboardEvent.KEY_SPACE);
         gameOver.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent delete = new KeyboardEvent();
+        delete.setKey(KeyboardEvent.KEY_L);
+        delete.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         keyboard.addEventListener(right);
         keyboard.addEventListener(left);
         keyboard.addEventListener(up);
         keyboard.addEventListener(down);
         keyboard.addEventListener(startGame);
         keyboard.addEventListener(gameOver);
+        keyboard.addEventListener(delete);
+
     }
 
 
@@ -73,8 +79,7 @@ public class MagicKeyboard implements KeyboardHandler {
                     break;
 
                 case KeyboardEvent.KEY_W:
-                    hero.canJump(true);
-                    hero.jump();
+                    hero.moveUp();
                     break;
 
                 case KeyboardEvent.KEY_S:
@@ -83,12 +88,17 @@ public class MagicKeyboard implements KeyboardHandler {
 
                 case KeyboardEvent.KEY_ENTER:
                     startScreen.deleteStartScreen();
+                    gameOver.deleteGameOver();
                     startScreen.setGameStarted2(true);
+                    gameOver.setGameOver2(true);
                     break;
 
                 case KeyboardEvent.KEY_SPACE:
-                    gameOver.deleteGameOver();
-                    gameOver.setGameOver2(true);
+                    hero.jump();
+                    break;
+
+                case KeyboardEvent.KEY_L:
+                    flower.delete();
                     break;
             }
         }

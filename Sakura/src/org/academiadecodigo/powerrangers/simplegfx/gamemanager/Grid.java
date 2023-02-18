@@ -1,5 +1,6 @@
 package org.academiadecodigo.powerrangers.simplegfx.gamemanager;
 
+import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Blocks;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Grid {
@@ -9,6 +10,8 @@ public class Grid {
     private int rows;
 
     private Cell[][] cells;
+
+    private Blocks blocks;
 
 
     public Grid(int cols, int rows) {
@@ -58,6 +61,7 @@ public class Grid {
     }
 
     public static int rowToY(int row) {
+
         return row * CELLSIZE + PADDING;
     }
 
