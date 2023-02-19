@@ -3,52 +3,45 @@ package org.academiadecodigo.powerrangers.simplegfx.audio;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import java.io.File;
 import java.net.URL;
 
     public class Sound {
-
         Clip clip;
-        URL soundURL[] = new URL[15];
+        URL mySoundList[] = new URL[10];
 
         public Sound() {
 
-            soundURL[0] = getClass().getResource("/sounds/StartMenu.wav");
-            soundURL[1] = getClass().getResource("/sounds/.wav");
-            soundURL[2] = getClass().getResource("/sounds/.wav");
-            soundURL[3] = getClass().getResource("/sounds/.wav");
-            soundURL[4] = getClass().getResource("/sounds/.wav");
-            soundURL[5] = getClass().getResource("/sounds/SimplyTheBest.wav");
-            soundURL[6] = getClass().getResource("/sounds/.wav");
-            soundURL[7] = getClass().getResource("/sounds/SeeYouAgain.wav");
-            soundURL[8] = getClass().getResource("/sounds/DarkHallway.wav");
-            soundURL[9] = getClass().getResource("/sounds/.wav");
-            soundURL[10] = getClass().getResource("/sounds/.wav");
-            soundURL[11] = getClass().getResource("/sounds/LoseGoofy.wav");
-
+            mySoundList[0] = getClass().getResource("/start_music.WAV");
+            mySoundList[1] = getClass().getResource("/PitcherPerfectTheme_Loopable.wav");
+            mySoundList[2] = getClass().getResource("/DarkCavern.wav");
+            mySoundList[3] = getClass().getResource("/falling.wav");
+            mySoundList[4] = getClass().getResource("/flower.wav");
+            mySoundList[5] = getClass().getResource("/jump.wav");
 
 
         }
 
         public void setFile(int i) {
             try {
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(mySoundList[i]);
                 clip = AudioSystem.getClip();
                 clip.open(audioInputStream);
             } catch (Exception e) {
             }
         }
 
-        public void playMusic(int i) {
+        public void playMusic(int music) {
 
-            setFile(i);
-            play(i);
+            setFile(music);
+            play(music);
             loop();
         }
 
-        public void playSE(int i) {
+        public void playSE(int music) {
 
-            setFile(i);
-            play(i);
+            setFile(music);
+            play(music);
         }
 
         public void stopMusic() {
@@ -57,7 +50,7 @@ import java.net.URL;
         }
 
 
-        public void play(int i) {
+        public void play(int music) {
             clip.start();
         }
 

@@ -2,6 +2,8 @@ package org.academiadecodigo.powerrangers.simplegfx.gamemanager;
 
 import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Flower;
 import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Hero;
+import org.academiadecodigo.powerrangers.simplegfx.GameObjects.Mcs;
+import org.academiadecodigo.powerrangers.simplegfx.audio.Sound;
 
 import java.sql.SQLOutput;
 import java.util.LinkedList;
@@ -11,7 +13,7 @@ public class GameColision {
     public Hero hero;
     public boolean checkCollision = false;
     Flower flower;
-
+    Sound sound = new Sound();
     Background background;
     public GameColision(Hero hero, Flower flower) {
         this.hero = hero;
@@ -21,35 +23,25 @@ public class GameColision {
     }
 
     public void isFlowerCollision() {
-       // for (Flower flower: array) {
-         //   background.setFlowers();
-
-       /* if (((flower.getX() + flower.getMaxX()) / 2) >= hero.getX() && ((flower.getX() + flower.getMaxX()) / 2) <= hero.getMaxX()) {
-            flower.delete();
-            array.remove(flower);
-        } else if (((flower.getY() + flower.getMaxY()) / 2) >= hero.getY() && ((flower.getY() + flower.getMaxY()) / 2) <= hero.getMaxY()) {
-            flower.delete();
-            array.remove(flower);
-        } else if (((hero.getX() + hero.getMaxX()) / 2) >= flower.getX() && ((hero.getX() + hero.getMaxX()) / 2) <= flower.getMaxX()) {
-            flower.delete();
-            array.remove(flower);
-        } else if (((hero.getY() + hero.getMaxY()) / 2) >= flower.getY() && ((hero.getY() + hero.getMaxY()) / 2) <= flower.getMaxY()) {
-            flower.delete();
-            array.remove(flower);
-        }*/
-            if((flower.getMaxX()== hero.getX())||(flower.getMaxY()==hero.getY())||(flower.getX()==hero.getMaxX())||(flower.getY()==hero.getMaxY())){
+        if ((hero.getMaxX() >=flower.getX()) && (hero.getX()<= flower.getMaxX())) {
+            if ((hero.getMaxY() >=flower.getY()) && (hero.getY()<= flower.getMaxY())) {
+                sound.playSE(4);
                 flower.delete();
             }
-            //check right side of hero
-        /*if (((hero.getMaxX() - hero.getX())) == ((flower.getMaxX() - flower.getX()))) {
-            flower.delete();
-
-        } else {
-            System.out.println("nao foi apagado");
-        }*/
-
-
         }
 
     }
+
+    /*public boolean isMcCollision(Mcs mc) {
+        if ((hero.getMaxX() >=mc.getX()) && (hero.getX()<= mc.getMaxX())) {
+            if ((hero.getMaxY() >=mc.getY()) && (hero.getY()<= mc.getMaxY())) {
+                return true;
+            }
+        }
+        return false;
+
+    }*/
+
+    }
+
 

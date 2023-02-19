@@ -1,5 +1,6 @@
 package org.academiadecodigo.powerrangers.simplegfx.GameObjects;
 
+import org.academiadecodigo.powerrangers.simplegfx.audio.Sound;
 import org.academiadecodigo.powerrangers.simplegfx.gamemanager.Game;
 import org.academiadecodigo.powerrangers.simplegfx.gamemanager.Grid;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -15,12 +16,16 @@ public class Hero {
     private String nextPicture = "Sakura/media/Chars/Carlos/Char_Carlos_Front_Feet_Together.png";
     private boolean direction = false;
     Grid grid;
+    Sound sound;
 
     Game game;
 
     public Hero(int col, int row, String filepath) { // 778
         hero = new Picture(col, row, nextPicture);
         hero.draw();
+    }
+    public void deleteHero(){
+        hero.delete();
     }
 
     public int getX() {
@@ -52,9 +57,9 @@ public class Hero {
         direction = false;
         if (hero.getMaxX() <= 1890) { //change 1920 to grid max width
             hero.translate(10, 0);
-            if (hero.getX()>= 1870){
+           /* if (hero.getX()>= 1870){
                 hero.translate(-10,0);
-            }
+            }*/
 
             count++;
             if (count == 5) {
@@ -66,14 +71,15 @@ public class Hero {
     }
 
     public void jump(){
-
         if (isJumping) {
             return;
         }
         isJumping = true;
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 int jumpDuration = 30; // adjust as needed
                 int maxJumpHeight = 20; // adjust as needed
                 int time = 3;
@@ -90,7 +96,7 @@ public class Hero {
                 time =2;
                 while (time < jumpDuration) {
                     try {
-                        Thread.sleep(10);
+                        Thread.sleep(16);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -104,6 +110,8 @@ public class Hero {
         thread.start();
     }
 
+
+
     public void moveLeft() {
         if(!direction){
             nextPicture = "Sakura/media/Chars/Carlos/Char_Carlos_Back_Normal.png";
@@ -111,9 +119,9 @@ public class Hero {
         }
         direction = true;
         hero.translate(-10, 0);
-        if (hero.getX() <= 0){
+        /*if (hero.getX() <= 0){
             hero.translate(10,0);
-        }
+        }*/
 
         if (hero.getX() >= 0) {
             count++;
