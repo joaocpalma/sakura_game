@@ -18,7 +18,7 @@ public class Game {
     private Sound sound = new Sound();
     private GameColision gameColision;
     public final static String prefix = "";
-    private boolean start = false;
+    //private boolean start = false;
 
     //private Mcs Mc;
     //private Mcs Mc1;

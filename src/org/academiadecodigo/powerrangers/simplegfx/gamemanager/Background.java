@@ -14,7 +14,7 @@ public class Background {
         //propriedades
         private Hero hero;
         private LinkedList<Mcs> mc;
-        public LinkedList<Flower> flower;
+        private LinkedList<Flower> flower;
         private LinkedList<Moob> moob;
         private Rectangle background;
 

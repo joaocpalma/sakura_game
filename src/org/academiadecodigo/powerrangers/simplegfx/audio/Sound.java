@@ -9,20 +9,19 @@ import java.io.File;
 import java.net.URL;
 
     public class Sound {
-        Clip clip;
-        URL[] mySoundList = new URL[10];
-        File[] soundList = new File[100];
+        private Clip clip;
+        private File[] soundList = new File[100];
 
 
 
         public Sound() {
 
-            soundList[0] = new File(Game.prefix+ "start_music.wav");
-            soundList[1] = new File(Game.prefix+ "PitcherPerfectTheme_Loopable.wav");
-            soundList[2] = new File(Game.prefix+ "DarkCavern.wav");
-            soundList[3] = new File(Game.prefix+ "falling.wav");
-            soundList[4] = new File(Game.prefix+ "flower.wav");
-            soundList[5] = new File(Game.prefix+ "jump.wav");
+            soundList[0] = new File(Game.prefix+ "resources/sound/start_music.wav");
+            soundList[1] = new File(Game.prefix+ "resources/sound/PitcherPerfectTheme_Loopable.wav");
+            soundList[2] = new File(Game.prefix+ "resources/sound/DarkCavern.wav");
+            soundList[3] = new File(Game.prefix+ "resources/sound/falling.wav");
+            soundList[4] = new File(Game.prefix+ "resources/sound/flower.wav");
+            soundList[5] = new File(Game.prefix+ "resources/sound/jump.wav");
 
 
         }
@@ -41,7 +40,7 @@ import java.net.URL;
 
             setFile(music);
             play(music);
-            //loop();
+            loop();
         }
 
         public void playSE(int music) {

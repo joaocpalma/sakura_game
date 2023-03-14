@@ -6,11 +6,11 @@ import org.academiadecodigo.powerrangers.simplegfx.audio.Sound;
 
 public class GameColision {
 
-    public Hero hero;
-    public boolean checkCollision = false;
-    Flower flower;
-    Sound sound = new Sound();
-    Background background;
+    private Hero hero;
+    private boolean checkCollision = false;
+    private Flower flower;
+    private Sound sound = new Sound();
+    private Background background;
     public GameColision(Hero hero, Flower flower) {
         this.hero = hero;
         this.flower = flower;
